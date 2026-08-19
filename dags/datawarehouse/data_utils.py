@@ -51,6 +51,7 @@ def create_table(schema):
                     "video_title" TEXT NOT NULL,
                     "upload_date" TIMESTAMP NOT NULL,
                     "duration" VARCHAR(25) NOT NULL,
+                    "video_type" VARCHAR(25) NOT NULL,
                     "video_views" INT,
                     "likes_count" INT,
                     "comments_count" INT
