@@ -60,7 +60,7 @@ x-airflow-common:
     # Postgres database backend for storing task results executed by workers
     AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://${CELERY_BACKEND_USERNAME}:${CELERY_BACKEND_PASSWORD}@${POSTGRES_CONN_HOST}:${POSTGRES_CONN_PORT}/${CELERY_BACKEND_NAME}
     # URL for the Redis message broker - handles the communication and task distribution between the scheduler and workers
-    AIRFLOW__CELERY__BROKER_URL: redis://:@rerdis:6379/0
+    AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
     # Key for encrypting data
     AIRFLOW__CORE__FERNET_KEY: ${FERNET_KEY}
     # New DAGs are paused by default
