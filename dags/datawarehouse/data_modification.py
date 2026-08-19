@@ -23,8 +23,8 @@ def insert_rows(cursor, conn, schema, row):
 
             cursor.execute(
                 f"""
-                INSERT INTO {schema}.{table}("video_id", "video_title", "upload_date", "duration", "video_views", "likes_count", "comments_count")
-                VALUES (%(video_id)s, %(video_title)s, %(upload_date)s, %(duration)s, %(video_views)s, %(likes_count)s, %(comments_count)s)
+                INSERT INTO {schema}.{table}("video_id", "video_title", "upload_date", "duration", "video_type", "video_views", "likes_count", "comments_count")
+                VALUES (%(video_id)s, %(video_title)s, %(upload_date)s, %(duration)s, %(video_type)s, %(video_views)s, %(likes_count)s, %(comments_count)s)
                 """, row
             )
 
