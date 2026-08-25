@@ -3,6 +3,7 @@ import pendulum
 from datetime import datetime, timedelta
 from api.video_stats import get_playlist_id, get_video_ids, extract_video_data, save_to_json
 from datawarehouse.dwh import staging_table, gold_table
+from dataquality.soda import youtube_elt_dq
 
 # Define the local timezone
 local_tz = pendulum.timezone("America/New_York")
@@ -54,3 +55,19 @@ with DAG(
 
     # Define dependencies
     update_staging >> update_gold
+
+with DAG(
+    dag_id='data_quality',
+    default_args=default_args,
+    description='DAG to run DQ tests on staging and gold layers of the data warehouse',
+    schedule='0 16 * * *',
+    catchup=False
+) as dag:
+    
+    # Define tasks
+    soda_validate_staging = youtube_elt_dq(schema='staging')
+    soda_validate_gold = youtube_elt_dq(schema='gold')
+
+    # Define dependencies
+    soda_validate_staging >> soda_validate_gold
+    
