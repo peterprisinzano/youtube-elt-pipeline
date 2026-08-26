@@ -28,7 +28,7 @@ with DAG(
     dag_id='extract_yt_api_data',
     default_args=default_args,
     description='DAG to extract data from Youtube API and collect raw data in JSON format',
-    schedule=None,
+    schedule='0 14 * * *',
     catchup=False
 ) as dag_extract:
     
@@ -71,7 +71,7 @@ with DAG(
     dag_id='data_quality',
     default_args=default_args,
     description='DAG to run DQ tests on staging and gold layers of the data warehouse',
-    schedule='0 16 * * *',
+    schedule=None,
     catchup=False
 ) as dag_quality:
     
