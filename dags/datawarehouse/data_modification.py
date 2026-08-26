@@ -86,7 +86,7 @@ def delete_rows(cursor, conn, schema, ids_to_delete):
 
         cursor.execute(
             f"""
-            DELETE FRROM {schema}.{table}
+            DELETE FROM {schema}.{table}
             WHERE "video_id" IN {ids_to_delete};
             """
         )
