@@ -31,7 +31,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
-          password: ${{ secrerts.DOCKERHUB_PASSWORD }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Build and push Docker image
         if: steps.changed-files-build.outputs.any_changed == 'true'
         run: |
