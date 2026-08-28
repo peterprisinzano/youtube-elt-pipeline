@@ -47,10 +47,10 @@ x-airflow-common:
   &airflow-common
   # Uses custom image that builds on top of default airflow image
   # Image stored on DockerHub
-  image: ${DOCKERHUB_NAMESPACE}/${DOCKERHUB_REPOSITORY}:${IMAGE_TAG}
+  image: ${DOCKERHUB_NAMESPACE}/${DOCKERHUB_REPOSITORY}:latest
   # Use the .env file to read the connection params and variables - SWITCH OFF WHEN USING GITHUB ACTIONS
-  env_file:
-    - .env
+  # env_file:
+  #   - .env
   environment:
     &airflow-common-env
     # Set executor to CeleryExecutor
@@ -109,8 +109,8 @@ services:
     container_name: postgres
     image: postgres:13
     # Use the .env file to read the connection params - SWITCH OFF WHEN USING GITHUB ACTIONS
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
     # Env vars after POSTGRES_PASSWORD are needed for CI-CD workflow - SWITCH ON WHEN USING GITHUB ACTIONS
     environment:
       - POSTGRES_USER=${POSTGRES_CONN_USERNAME}
