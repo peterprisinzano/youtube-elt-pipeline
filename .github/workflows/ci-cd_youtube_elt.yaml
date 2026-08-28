@@ -84,6 +84,7 @@ jobs:
       - name: Run Unit and Integration Tests
         if: steps.changed-files-tests.outputs.any_changed == 'true'
         run: docker exec -t airflow-worker sh -c "pytest tests/ -v"
+      - name: Run End-to-End DAG Tests
         if: steps.changed-files-tests.outputs.any_changed == 'true'
         run: |
           DAG_NAMES=("extract_yt_api_data" "update_db" "data_quality")
